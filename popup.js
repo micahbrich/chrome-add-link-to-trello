@@ -18,9 +18,17 @@ document.addEventListener('Trelloready', function () {
         e.preventDefault();
         Trello.authorize(options.trello_options);
 
+        var desc =  
+            "[" + $('#title').val() + "]" 
+                + "(" + $('#url').val() + ")" +
+            "\n" + 
+            $('#desc').val();
+
         var data = {
             name: $('#title').val(),
-            desc: $('#url').val(),
+            desc: desc,
+            pos: 'top',
+            urlSource: $('#url').val(),
             idList: encodeURIComponent($('#list').val()),
             token: localStorage.trello_token
         };
